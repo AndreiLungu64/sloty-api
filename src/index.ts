@@ -7,6 +7,7 @@ import registerRouter from "./routes/api/register";
 import loginRouter from "./routes/api/login";
 import refreshRouter from "./routes/api/refresh";
 import logoutRouter from "./routes/api/logout";
+import verifyJWT from "./middleware/verifyJwt";
 
 dotenv.config();
 
@@ -22,6 +23,8 @@ app.use("/login", loginRouter);
 app.use("/refresh", refreshRouter);
 app.use("/logout", logoutRouter);
 
+app.use(verifyJWT);
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
@@ -32,4 +35,9 @@ app.use((req, res) => {
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
+  console.log(`Try:`);
+  console.log(`http://localhost:${port}/register`);
+  console.log(`http://localhost:${port}/login`);
+  console.log(`http://localhost:${port}/refresh`);
+  console.log(`http://localhost:${port}/logout`);
 });
