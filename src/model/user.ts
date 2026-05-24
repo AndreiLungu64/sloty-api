@@ -4,14 +4,13 @@ type Role = "user" | "admin";
 type User = {
   id: number;
   email: string;
-  first_name: string;
-  last_name: string;
   password: string;
   role: Role;
-  refreshToken: string;
+  refresh_token: string;
   created_at: Date;
 };
 
 //Dto
-export type CreateUserDTO = Omit<User, "id" | "created_at">;
+export type CreateUserDTO = Omit<User, "id" | "refresh_token" | "created_at">;
+export type AuthUserDTO = Omit<User, "id" | "created_at">;
 export type UserResponseDTO = Omit<User, "password" | "refresh_token">;
