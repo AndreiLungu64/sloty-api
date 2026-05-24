@@ -1,4 +1,3 @@
-import { create } from "node:domain";
 import { query } from "../db/db";
 import { AuthUserDTO, CreateUserDTO, UserResponseDTO } from "../model/user";
 
@@ -23,11 +22,11 @@ async function getUserByRefreshToken(refreshToken: string): Promise<UserResponse
 }
 
 async function updateUserRefreshToken(email: string, refreshToken: string): Promise<void> {
-  const result = await query("UPDATE user_account SET refresh_token = $1 WHERE email = $2", [refreshToken, email]);
+  await query("UPDATE user_account SET refresh_token = $1 WHERE email = $2", [refreshToken, email]);
 }
 
 async function deleteUserRefreshToken(email: string): Promise<void> {
-  const result = await query("UPDATE user_account SET refresh_token = null WHERE email = $1", [email]);
+  await query("UPDATE user_account SET refresh_token = null WHERE email = $1", [email]);
 }
 
 async function createUser(user: CreateUserDTO): Promise<AuthUserDTO> {
