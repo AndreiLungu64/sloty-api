@@ -13,4 +13,4 @@ type User = {
 //Dto
 export type CreateUserDTO = Omit<User, "id" | "refresh_token" | "created_at">;
 export type AuthUserDTO = Omit<User, "id" | "created_at">;
-export type UserResponseDTO = Omit<User, "password" | "refresh_token">;
+export type UserResponseDTO = Omit<User, "refresh_token">;
