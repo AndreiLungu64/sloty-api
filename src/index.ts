@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import corsOptions from "./config/corsOptions";
-
 import registerRouter from "./routes/api/register";
 import loginRouter from "./routes/api/login";
 import refreshRouter from "./routes/api/refresh";

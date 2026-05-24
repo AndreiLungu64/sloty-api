@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --exec \"node --no-warnings --loader ts-node/esm\" src/index.ts",
+    "dev": "nodemon --exec \"tsx\" src/index.ts",
     "build": "tsc",
     "start": "node dist/index.ts"
   },
@@ -31,7 +31,7 @@
     "@types/node": "^25.9.1",
     "@types/pg": "^8.20.0",
     "nodemon": "^3.1.14",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.22.3",
     "typescript": "^6.0.3"
   }
 }
