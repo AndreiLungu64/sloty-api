@@ -22,9 +22,12 @@ async function getUserByRefreshToken(refreshToken: string): Promise<UserResponse
   return result.rowCount ? result.rows[0] : null;
 }
 
-async function updateUserRefreshToken(email: string, refreshToken: string): Promise<UserResponseDTO | null> {
+async function updateUserRefreshToken(email: string, refreshToken: string): Promise<void> {
   const result = await query("UPDATE user_account SET refresh_token = $1 WHERE email = $2", [refreshToken, email]);
-  return result.rowCount ? result.rows[0] : null;
+}
+
+async function deleteUserRefreshToken(email: string): Promise<void> {
+  const result = await query("UPDATE user_account SET refresh_token = null WHERE email = $1", [email]);
 }
 
 async function createUser(user: CreateUserDTO): Promise<AuthUserDTO> {
@@ -38,5 +41,6 @@ export const userRepo = {
   getUserByEmail,
   getUserByRefreshToken,
   updateUserRefreshToken,
+  deleteUserRefreshToken,
   createUser,
 };
